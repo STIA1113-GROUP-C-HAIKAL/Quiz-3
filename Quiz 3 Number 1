@@ -1,0 +1,75 @@
+public static Scanner sc = new Scanner(System.in);
+	
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		int x;
+		int[] userArray;
+		int option;
+
+		System.out.print("Please insert the integer length : ");
+		x = sc.nextInt();
+		userArray = new int[x];
+		
+		for (int i=0; i<x; i++) {
+			System.out.print("Please insert array element " + (i+1) + ": ");
+			userArray[i] = sc.nextInt();
+		}
+		
+		System.out.println("What would you like to do now ?");
+		System.out.print("1. Display arrays		2.Search an Element		3.Sort the array");
+		option = sc.nextInt();
+		
+		while (option != 1 && option !=2 && option !=3 ) {
+			System.out.println("Invalid option");
+			System.out.print("Please insert the option again : ");
+			option = sc.nextInt();
+		}
+		switch (option) {
+		case 1 : 
+			displayArray(userArray, x);
+		case 2 : 
+			searchArray(userArray, x);
+		case 3 : 
+			sortArray(userArray, x);
+		}
+		
+	}
+	
+	public static void displayArray (int[] userArray, int x) {
+	
+		for (int i=0; i<x; i++) {
+			System.out.println("Array element " + (i + 1) + " " + userArray[i]);
+		}
+	}
+	
+	public static void searchArray(int[] userArray, int x) {
+		int search;
+		System.out.print("Please insert the element that you want to search : ");
+		search = sc.nextInt();
+		
+		for (int i=0; i<x; i++) {
+			if (userArray[i] == search) {
+				System.out.println("We have found the array you are looking for, which is " + userArray[i]);
+			}
+			else {
+				System.out.print("That element does not exist");
+				break;
+			}
+		}
+	}
+	
+	public static void sortArray(int[] userArray, int x) {
+		int temp;
+		for(int i = 1; i<x; i++) {
+			for(int j = i; j>0; j--) {
+				if(userArray[j] < userArray[j-1]) {
+					temp = userArray[j];
+					userArray[j] = userArray[j-1];
+					userArray[j-1] = temp;
+				}
+			}
+		}
+		for(int i=0; i<x; i++) {
+			System.out.println(userArray[i]);
+		}
+	}
